@@ -9,4 +9,5 @@
  */
 export function findCognitiveFunction(mbti) {
   throw new Error("Not implemented");
+  const letters = Array.from(mbti);
 }
