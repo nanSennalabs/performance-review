@@ -14,6 +14,7 @@ export function findCognitiveFunction(mbti) {
 
   const dominant = getDominant(letters[1], attitude);
   const auxiliary = getAuxiliary(letters[2], attitude);
+  const tertiary = getTertiaryAndInferior(auxiliary);
 function getDominant(letter, Att) {
   switch (Att) {
     case "J":
@@ -31,4 +32,41 @@ function getAuxiliary(letter, Att) {
       return letter + "i";
   }
 }
+
+function getTertiaryAndInferior(letter) {
+  const arr = Array.from(letter);
+
+  return arr
+    .map((l, index) => {
+      if (index === 0) {
+        return swapLeter(l);
+      } else {
+        return swapLeter(l).toLowerCase();
+      }
+    })
+    .join("");
+}
+
+function swapLeter(letter) {
+  switch (letter.toUpperCase()) {
+    case "I":
+      return "E";
+    case "E":
+      return "I";
+
+    case "S":
+      return "N";
+    case "N":
+      return "S";
+
+    case "T":
+      return "F";
+    case "F":
+      return "T";
+
+    case "J":
+      return "P";
+    case "P":
+      return "J";
+  }
 }
