@@ -8,13 +8,17 @@
  * }}
  */
 export function findCognitiveFunction(mbti) {
-  throw new Error("Not implemented");
   const letters = Array.from(mbti);
   const attitude = letters[3];
 
   const dominant = getDominant(letters[1], attitude);
   const auxiliary = getAuxiliary(letters[2], attitude);
   const tertiary = getTertiaryAndInferior(auxiliary);
+  const inferior = getTertiaryAndInferior(dominant);
+
+  return { dominant, auxiliary, tertiary, inferior };
+}
+
 function getDominant(letter, Att) {
   switch (Att) {
     case "J":
